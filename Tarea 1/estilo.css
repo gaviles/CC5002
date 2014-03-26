@@ -1,0 +1,11 @@
+
+.centrar {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.boton {
+	border-radius: 5px;
+	background-color: blue;
+	margin: 5px;
+}
