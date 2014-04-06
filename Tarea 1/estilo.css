@@ -1,11 +1,27 @@
 
-.centrar {
+.principal {
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
+	width: 800px;
+	background-color: #fece82;
+	height: 600px;
+	padding: 25px;
+	border-radius: 15px;
+}
+
+.botones {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	width: 400px;
 }
 
 .boton {
 	border-radius: 5px;
-	background-color: blue;
-	margin: 5px;
+	background-color: #53bcf1;
+	color: black;
+	padding: 6px;
+	text-decoration: none;
 }
+

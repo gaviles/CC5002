@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DCC Express</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<script>
+		aCountries = [
+			{
+				name:"Argentina",
+				iso:"AR",
+				cities:[{name:"Buenos Aires"},{name:"Córdoba"},{name:"Jujuy"},{name:"Mendoza"}]
+			},
+			{
+				name:"Chile",
+				iso:"CL",
+				cities:[
+					{name:"Antofagasta"},{name:"Concepción"},{name:"Copiapó"},{name:"La Serena"},
+					{name:"Puerto Montt"},{name:"Santiago"}
+				]
+			},
+			{
+				name:"Perú",
+				iso:"PE",
+				cities:[{name:"Lima"},{name:"Cuzco"},{name:"Arequipa"},{name:"Trujillo"}]
+			}
+		];
+
+		/*
+		 * This funtion will add an option to the given selection type.
+		 */
+
+		function apendOption( oSelection, sValue, sCaption  ){
+
+			// create the option object then set the value
+			var oOption = document.createElement("option");
+			oOption.setAttribute("value",sValue);
+			// create the "caption" of teh object and then append it to the option object
+			var oCaption = document.createTextNode( sCaption );
+			oOption.appendChild(oCaption);
+			oSelection.appendChild(oOption);
+		}
+
+		function setPaisOrigen( oCountrySelection ){
+
+			removeSuggestion(oCountrySelection);
+			var sPais = oCountrySelection.value;
+			var oPaisOrigenSelection = document.getElementById('ciudad-origen');
+			setCiudades( oPaisOrigenSelection, sPais );
+		}
+
+		function setPaisDestino( oCountrySelection ){
+
+			removeSuggestion(oCountrySelection);
+			var sPais = oCountrySelection.value;
+			var oPaisDestinoSelection = document.getElementById('ciudad-destino');
+			setCiudades( oPaisDestinoSelection, sPais );
+		}
+
+		function removeSuggestion( oSelect ){
+			var oSuggestion = oSelect[0];
+			if(oSuggestion.value == "" ){
+				oSuggestion.remove();
+			}
+
+		}
+
+		function setCiudades( oCiudadSelection, sPais ){
+
+			for(var i= 0; i < aCountries.length ; i++){
+
+				if(aCountries[i].name == sPais  ){
+					// Reset the content of the given selection
+					oCiudadSelection.innerHTML = "";
+					for( var j=0 ; j < aCountries[i].cities.length ; j++ ){
+						apendOption( oCiudadSelection, aCountries[i].cities[j].name, aCountries[i].cities[j].name );
+					}
+				}
+			}
+		}
+
+		function ini(){
+			// Insertar el arreglo de paises en el SELECT de paises
+			var oPaisOrigenSelect = document.getElementById('pais-origen');
+			var oPaisDestinoSelect = document.getElementById('pais-destino');
+			for(var i= 0; i < aCountries.length ; i++){
+				apendOption( oPaisOrigenSelect, aCountries[i].name, aCountries[i].name );
+				apendOption( oPaisDestinoSelect, aCountries[i].name, aCountries[i].name );
+			}
+		}
+
+	</script>
+
+</head>
+<body onload="ini()">
+
+	<div class="principal" >
+		<h1>DCC Express!!!</h1>
+		<br/>
+		<div class="botones">
+			<a class="boton" href="agregar-viaje.html" >Agregar Viaje</a>
+			<a class="boton" href="agregar-encargo.html" >Agregar Encargo</a>
+			<a class="boton" href="ver-viajes.html" >Ver Viajes</a>
+			<a class="boton" href="ver-encargos.html" >Ver Encargos</a>
+		</div>
+		<br/>
+
+		<form action="" method="POST" >
+		<table>
+			<tr>
+				<td>
+					País de Origen:
+				</td>
+				<td>
+					<select id="pais-origen" name="pais-origen" onchange="setPaisOrigen(this)" >
+						<option value="" >Seleccione un País</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Ciudad de Origen;
+				</td>
+				<td>
+					<select id="ciudad-origen" name="ciudad-origen">
+						<option value="buenos_aires" >Seleccione un País primero</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					País de Destino:
+				</td>
+				<td>
+					<select id="pais-destino" name="pais-destino" onchange="setPaisDestino(this)">
+						<option value="" >Seleccione un País</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Ciudad de Destino:
+				</td>
+				<td>
+					<select id="ciudad-destino" name="ciudad-destino">
+						<option value="buenos_aires" >Seleccione un País primero</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Fecha ida:
+				</td>
+				<td>
+					<input type="text" name="fecha-ida" value="año-mes-dia" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Fecha regreso:
+				</td>
+				<td>
+					<input type="text" name="fecha-regreso" value="año-mes-dia"  />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Espacio Disponible:
+				</td>
+				<td>
+					<select name="espacio-disponible">
+						<option value="10x10x10" >10x10x10</option>
+						<option value="20x20x20" >20x20x20</option>
+						<option value="30x30x30" >30x30x30</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Kilos Disponibles:
+				</td>
+				<td>				
+					<select name="kilos-disponibles">
+						<option value="200gr" >200 gr</option>
+						<option value="500gr" >500 gr</option>
+						<option value="800gr" >800 gr</option>
+						<option value="1kg" >1 kg</option>
+						<option value="1.5kg" >1.5 kg</option>
+						<option value="2kg" >2 kg</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Email del Viejero:
+				</td>
+				<td>
+					<input type="text" size="30" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Número de Celular:
+				</td>
+				<td>
+					<input type="text" size="15" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>
+					<input type="submit" value="Enviar" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</body>
+</html>
