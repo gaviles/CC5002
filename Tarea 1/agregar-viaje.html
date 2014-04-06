@@ -72,6 +72,7 @@
 				if(aCountries[i].name == sPais  ){
 					// Reset the content of the given selection
 					oCiudadSelection.innerHTML = "";
+					apendOption( oCiudadSelection, "", "Seleccione una Ciudad" );
 					for( var j=0 ; j < aCountries[i].cities.length ; j++ ){
 						apendOption( oCiudadSelection, aCountries[i].cities[j].name, aCountries[i].cities[j].name );
 					}
@@ -87,6 +88,42 @@
 				apendOption( oPaisOrigenSelect, aCountries[i].name, aCountries[i].name );
 				apendOption( oPaisDestinoSelect, aCountries[i].name, aCountries[i].name );
 			}
+		}
+
+		function validarFormulario(){
+			console.log("validando formulario");
+
+			// Validar Pais Origen
+			var oPaisOrigen = document.getElementById('pais-origen');
+			if( oPaisOrigen.value == "" ){
+				alert("Por favor seleccione un País de origen");
+				return false;
+			}
+
+			// Validar Ciudad de Origen
+			var oCiudadOrigen = document.getElementById('ciudad-origen');
+			if( oCiudadOrigen.value == "" ){
+				alert("Por favor seleccione una Ciudad de origen");
+				return false;
+			}
+
+			// Validar Pais de Destino
+			var oPaisDestino = document.getElementById('pais-destino');
+			if( oPaisDestino.value == "" ){
+				alert("Por favor seleccione un País de destino");
+				return false;
+			}
+
+			// Validar Ciudad de Destino
+			var oCiudadDestino = document.getElementById('ciudad-destino');
+			if( oCiudadDestino.value == "" ){
+				alert("Por favor seleccione una Ciudad de destino");
+				return false;
+			}
+
+
+			alert("formulario valido!")
+			return false;
 		}
 
 	</script>
@@ -105,7 +142,7 @@
 		</div>
 		<br/>
 
-		<form action="" method="POST" >
+		<form action="" method="POST" onsubmit="return validarFormulario()" >
 		<table>
 			<tr>
 				<td>
@@ -152,7 +189,7 @@
 					Fecha ida:
 				</td>
 				<td>
-					<input type="text" name="fecha-ida" value="año-mes-dia" />
+					<input type="text" name="fecha-ida" value="año-mes-dia"  maxlength="10" />
 				</td>
 			</tr>
 			<tr>
@@ -160,7 +197,7 @@
 					Fecha regreso:
 				</td>
 				<td>
-					<input type="text" name="fecha-regreso" value="año-mes-dia"  />
+					<input type="text" name="fecha-regreso" value="año-mes-dia" maxlength="10"  />
 				</td>
 			</tr>
 			<tr>
@@ -195,7 +232,7 @@
 					Email del Viejero:
 				</td>
 				<td>
-					<input type="text" size="30" />
+					<input type="text" name="email" size="30" />
 				</td>
 			</tr>
 			<tr>
@@ -203,7 +240,7 @@
 					Número de Celular:
 				</td>
 				<td>
-					<input type="text" size="15" />
+					<input type="text" name="celular" size="15" />
 				</td>
 			</tr>
 			<tr>
