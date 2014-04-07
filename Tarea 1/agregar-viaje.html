@@ -148,6 +148,13 @@
 				return oDate;
 			}
 		
+		function testEmail( sEmail ){
+			var expregEmail = /^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			if( !expregEmail.test(sEmail) ){
+				return false;
+			}
+			return true;
+		}
 
 
 		function validarFormulario(){
@@ -198,7 +205,24 @@
 				alert("La fecha de regreso debe ser mayor que la fecha de ida");
 				return false;
 			}
-				
+			
+			var sEspacioDisponible = document.getElementById('espacio-disponible').value;
+			if(sEspacioDisponible == ""){
+				alert("Por favor seleccione el espacio disponible.");
+				return false;
+			}
+
+			if( document.getElementById('kilos-disponibles').value == ""){
+				alert("Por favor seleccione los kilos disponibles.");
+				return false;
+			}
+
+			var bEmailValido = testEmail( document.getElementById('email').value );
+			if( !bEmailValido ){
+				alert("Correo electrónico no válido.");
+				return false;
+			}
+
 			alert("formulario valido!")
 			return false;
 		}
@@ -282,7 +306,7 @@
 					Espacio Disponible:
 				</td>
 				<td>
-					<select name="espacio-disponible">
+					<select id="espacio-disponible" name="espacio-disponible">
 						<option value="10x10x10" >10x10x10</option>
 						<option value="20x20x20" >20x20x20</option>
 						<option value="30x30x30" >30x30x30</option>
@@ -294,7 +318,7 @@
 					Kilos Disponibles:
 				</td>
 				<td>				
-					<select name="kilos-disponibles">
+					<select id="kilos-disponibles" name="kilos-disponibles">
 						<option value="200gr" >200 gr</option>
 						<option value="500gr" >500 gr</option>
 						<option value="800gr" >800 gr</option>
@@ -309,7 +333,7 @@
 					Email del Viejero:
 				</td>
 				<td>
-					<input type="text" name="email" size="30" />
+					<input id="email" type="email" name="email" size="30" />
 				</td>
 			</tr>
 			<tr>
