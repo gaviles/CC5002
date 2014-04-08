@@ -149,3 +149,35 @@ function testEmail( sEmail ){
 	}
 	return true;
 }
+
+/*
+ *  Esta función rellena una tabla según el arreglo de objetos que se ingresa.
+ *  Es importante notar que el orden y la cantidad de atributos son importantes por
+ *  que se auto genera el rellenado.
+ *  Dentro del objeto se debe espefificar el tipo de dato que se esta danto, asignando s para texto y i para imágenes
+ *   aData = [ [ {t:'s,v:'camara'},...],[]];
+ '} ] ]; 
+ */
+function fillTable( sTableID, aData ){
+
+	console.log("rellenando tabla");
+	var oTabla = document.getElementById(sTableID);
+
+	for( var i=0 ; i < aData.length ; i++ ){
+
+		var oRow = document.createElement("tr");
+
+		for( var j=0 ; j < aData[i].length ; j++ ){
+
+			var oCell = document.createElement("td");
+
+			if( aData[i][j].t == 's' ){
+				oCell.innerHTML = aData[i][j].v;
+			}else if( aData[i][j].t == 'i' ){
+				oCell.innerHTML = "<img alt=\"imagen articulo\" src=\"/img/small/"+aData[i][j].v+"\" />";
+			}
+			oRow.appendChild(oCell);
+		}
+		oTabla.appendChild(oRow);
+	}
+}

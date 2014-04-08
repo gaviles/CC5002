@@ -16,6 +16,9 @@
 	padding: 5px;
 	width: 420px;
 }
+.boton:hover{
+	background-color: #8fdd92;
+}
 
 .boton {
 	border-radius: 5px;
@@ -31,7 +34,6 @@ input{
 	border-style: none;
 	border-radius: 5px;
 	padding-left: 10px;
-
 }
 
 select{
@@ -40,4 +42,57 @@ select{
 	border-style: none;
 	padding-left: 10px;
 	border-radius: 5px;
+	background-color: white;
+}
+
+.tabla-formulario{
+	position:relative;
+	margin-left: auto;
+	margin-right: 260px;
+}
+
+
+.tabla table{
+	width:100%;
+	height:100%;
+	border-spacing: 0px;
+}
+.tabla tr:last-child td:last-child {
+	border-bottom-right-radius:5px;
+}
+.tabla table tr:first-child td:first-child {
+	border-top-left-radius:5px;
+}
+.tabla table tr:first-child td:last-child {
+	border-top-right-radius:5px;
+}
+.tabla tr:last-child td:first-child{
+	border-bottom-left-radius:5px;
+}
+.tabla tr:hover td{
+	background-color: #8fdd92;
+}
+.tabla tr:nth-child(odd){ background-color:#aad4ff; }
+.tabla tr:nth-child(even){ background-color:#ffffff; }
+.tabla td{
+	vertical-align:middle;
+	border:1px solid #000000 !important;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:7px;
+	color:#000000;
+}
+.tabla tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}
+.tabla tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.tabla tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.tabla tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
 }
