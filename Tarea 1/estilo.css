@@ -5,7 +5,7 @@
 	margin-right: auto;
 	width: 800px;
 	background-color: #fece82;
-	height: 600px;
+	min-height: 600px;
 	padding: 25px;
 	border-radius: 15px;
 }
@@ -26,6 +26,29 @@
 	color: black;
 	padding: 6px;
 	text-decoration: none;
+}
+
+.imagen-envio-mediana{
+	padding: 20px;
+	border:1px solid #000000;
+	position: relative;
+	margin-right: 0px;
+	margin-left: auto;
+	width: 320px;
+	height: 240px;
+	background-color: white;
+	margin-top: 0px;
+	z-index: 10;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.tabla-detalles{
+	width:400px !important;
+	position: relative;
+	top: -280px;
+	z-index: 0;
+	cursor: auto!important;
 }
 
 input{
@@ -52,10 +75,12 @@ select{
 }
 
 
+
 .tabla table{
 	width:100%;
 	height:100%;
 	border-spacing: 0px;
+	cursor: pointer;
 }
 .tabla tr:last-child td:last-child {
 	border-bottom-right-radius:5px;
@@ -95,4 +120,36 @@ select{
 }
 .tabla tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
+}
+
+
+.dumbBoxWrap {
+	display:none;
+	z-index:40001;
+}
+.dumbBoxOverlay {
+	position: absolute;
+	width:100%;
+	top:0px;
+	height:100%;
+	background-color:black;
+	opacity:.5;	z-index:40001;
+}
+.vertical-offset { 
+	position:fixed;
+	top:50px;
+	width:100%;
+	z-index:40002;
+	}
+.dumbBox{
+	width:820px;
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:white;
+	border:1px solid black;
+	border-radius: 5px;
+}
+.dumbBox img{
+	padding: 10px;
 }

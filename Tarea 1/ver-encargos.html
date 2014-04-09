@@ -7,23 +7,27 @@
 	<script type="text/javascript" src="validadores.js"></script>
 	<script type="text/javascript">
 
+	function verDetalle(){
+		window.location.href = "informacion-encargo.html";
+	}
+
 	function ini(){
 
 		var aData = [
 			[{t:'s',v:'Buenos Aires'},{t:'s',v:'Córdoba'},{t:'s',v:'20x20x20'},
-			{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art1.jpg'}],
+			{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'1.jpg'}],
 			[{t:'s',v:'Córdoba'},{t:'s',v:'Córdoba'},{t:'s',v:'10x10x10'},
-			{t:'s',v:'200gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art2.jpg'}],
+			{t:'s',v:'200gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'2.jpg'}],
 			[{t:'s',v:'Mendoza'},{t:'s',v:'Córdoba'},{t:'s',v:'30x30x30'},
-			{t:'s',v:'1 Kg'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art3.jpg'}],
+			{t:'s',v:'1 Kg'},{t:'s',v:'hola@chao.com'},{t:'i',v:'3.jpg'}],
 			[{t:'s',v:'Santiago'},{t:'s',v:'Antofagasta'},{t:'s',v:'10x10x10'},
-			{t:'s',v:'100gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art4.jpg'}],
+			{t:'s',v:'100gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'4.jpg'}],
 			[{t:'s',v:'Concepción'},{t:'s',v:'Copiapó'},{t:'s',v:'30x30x30'},
-			{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art5.jpg'}],
+			{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'5.jpg'}],
 			[{t:'s',v:'Cusco'},{t:'s',v:'Santiago'},{t:'s',v:'20x20x20'},
-			{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art6.jpg'}],
+			{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'},{t:'i',v:'6.jpg'}],
 			[{t:'s',v:'Lima'},{t:'s',v:'Cusco'},{t:'s',v:'10x10x10'},
-			{t:'s',v:'1.5 kg'},{t:'s',v:'hola@chao.com'},{t:'i',v:'art7.jpg'}],
+			{t:'s',v:'1.5 kg'},{t:'s',v:'hola@chao.com'},{t:'i',v:'7.jpg'}],
 		];
 
 		fillTable("encargos", aData	);		

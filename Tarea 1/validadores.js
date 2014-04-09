@@ -166,6 +166,7 @@ function fillTable( sTableID, aData ){
 	for( var i=0 ; i < aData.length ; i++ ){
 
 		var oRow = document.createElement("tr");
+		oRow.setAttribute( "onclick","verDetalle(this)" );
 
 		for( var j=0 ; j < aData[i].length ; j++ ){
 
@@ -174,7 +175,7 @@ function fillTable( sTableID, aData ){
 			if( aData[i][j].t == 's' ){
 				oCell.innerHTML = aData[i][j].v;
 			}else if( aData[i][j].t == 'i' ){
-				oCell.innerHTML = "<img alt=\"imagen articulo\" src=\"/img/small/"+aData[i][j].v+"\" />";
+				oCell.innerHTML = "<img alt=\"imagen articulo\" src=\"img/small/"+aData[i][j].v+"\" />";
 			}
 			oRow.appendChild(oCell);
 		}
