@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * Database Controller
+ */
+
+class DatabaseController {
+
+	private $dbURL;
+	private $dbUser;
+	private $dbPassword;
+	private $dbEncoding;
+	private $dbDatabase;
+	private $oConnection;
+	
+	public function __construct( $sUrl='localhost',$sUser='root',$sPassword='hola',$sDatabase='tarea2'){
+		$this->setUrl($sUrl);
+		$this->setUser($sUser);
+		$this->setPassword($sPassword);
+		$this->setDatabase($sDatabase);
+		$this->connect();
+	}
+	
+	public function connect(){
+		// Create connection
+		$this->oConnection = mysqli_connect($this->dbURL,$this->dbUser,$this->dbPassword,$this->dbDatabase);
+		
+		// Check connection
+		if (mysqli_connect_errno()) {
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+	}
+	
+	public function close(){
+		mysqli_close($this->oConnection);
+	}
+	
+	public function setDatabase($sDatabase){
+		$this->dbDatabase = $sDatabase;
+	}
+	
+	public function setUrl($sUrl){
+		$this->dbURL = $sUrl;
+	}
+	
+	public function setUser($sUser){
+		$this->dbUser = $sUser;
+	}
+	
+	public function setPassword($sPassword){
+		$this->dbPassword = $sPassword;
+	}
+}
+
+?>

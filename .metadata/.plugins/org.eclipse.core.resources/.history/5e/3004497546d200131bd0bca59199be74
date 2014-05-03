@@ -1,0 +1,8 @@
+<?php
+/**
+ * Index file inizialize the php components to use
+ */
+
+include_once('');
+
+$GLOBALS['db'] = new DatabaseController(); 

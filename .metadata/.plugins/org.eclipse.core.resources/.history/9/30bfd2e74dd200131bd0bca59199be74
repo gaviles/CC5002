@@ -1,0 +1,47 @@
+<?php
+
+
+/**
+ * Database Controller
+ */
+
+class DatabaseController {
+
+	private $dbURL;
+	private $dbUser;
+	private $dbPassword;
+	private $dbEncoding;
+	private $dbDatabase;
+	private $oConnection;
+	
+	public function __construct( $sUrl='localhost',$sUser='root',$sPassword='hola'){
+		$this->setUrl($sUrl);
+		$this->setUser($sUser);
+		$this->setPassword($sPassword);
+		$this->connect();
+	}
+	
+	private function connect(){
+		// Create connection
+		$con=mysqli_connect("example.com","peter","abc123","my_db");
+		
+		// Check connection
+		if (mysqli_connect_errno()) {
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+	}
+	
+	public function setUrl(){
+		$this->dbURL = $sUrl;
+	}
+	
+	public function setUser(){
+		$this->dbUser = $sUser;
+	}
+	
+	public function setPassword(){
+		$this->dbPassword = $sPassword;
+	}
+}
+
+?>

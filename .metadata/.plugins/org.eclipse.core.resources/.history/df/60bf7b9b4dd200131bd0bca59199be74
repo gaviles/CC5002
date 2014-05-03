@@ -1,0 +1,23 @@
+<?php
+
+
+/**
+ * Database Controller
+ */
+
+class DatabaseController {
+
+	private $dbURL;
+	private $dbUser;
+	private $dbPassword;
+	private $dbEncoding;
+	
+	public function __construct( $sUrl='localhost',$sUser='root',$sPassword='hola'){
+		$this->dbURL = $sUrl;
+		$this->dbUser = $sUser;
+		$this->dbPassword = $sPassword;
+	}
+	
+}
+
+?>

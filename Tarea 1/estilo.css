@@ -152,4 +152,6 @@ select{
 }
 .dumbBox img{
 	padding: 10px;
+	width: 800px;
+	height: 600px;
 }

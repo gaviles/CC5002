@@ -1,0 +1,157 @@
+
+.principal {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	background-color: #fece82;
+	min-height: 600px;
+	padding: 25px;
+	border-radius: 15px;
+}
+
+.botones {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	width: 420px;
+}
+.boton:hover{
+	background-color: #8fdd92;
+}
+
+.boton {
+	border-radius: 5px;
+	background-color: #53bcf1;
+	color: black;
+	padding: 6px;
+	text-decoration: none;
+}
+
+.imagen-envio-mediana{
+	padding: 20px;
+	border:1px solid #000000;
+	position: relative;
+	margin-right: 0px;
+	margin-left: auto;
+	width: 320px;
+	height: 240px;
+	background-color: white;
+	margin-top: 0px;
+	z-index: 10;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.tabla-detalles{
+	width:400px !important;
+	position: relative;
+	top: -280px;
+	z-index: 0;
+	cursor: auto!important;
+}
+
+input{
+	width: 240px;
+	height: 30px;
+	border-style: none;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+
+select{
+	width: 250px;
+	height: 30px;
+	border-style: none;
+	padding-left: 10px;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.tabla-formulario{
+	position:relative;
+	margin-left: auto;
+	margin-right: 260px;
+}
+
+
+
+.tabla table{
+	width:100%;
+	height:100%;
+	border-spacing: 0px;
+	cursor: pointer;
+}
+.tabla tr:last-child td:last-child {
+	border-bottom-right-radius:5px;
+}
+.tabla table tr:first-child td:first-child {
+	border-top-left-radius:5px;
+}
+.tabla table tr:first-child td:last-child {
+	border-top-right-radius:5px;
+}
+.tabla tr:last-child td:first-child{
+	border-bottom-left-radius:5px;
+}
+.tabla tr:hover td{
+	background-color: #8fdd92;
+}
+.tabla tr:nth-child(odd){ background-color:#aad4ff; }
+.tabla tr:nth-child(even){ background-color:#ffffff; }
+.tabla td{
+	vertical-align:middle;
+	border:1px solid #000000 !important;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:7px;
+	color:#000000;
+}
+.tabla tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}
+.tabla tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.tabla tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.tabla tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}
+
+
+.dumbBoxWrap {
+	display:none;
+	z-index:40001;
+}
+.dumbBoxOverlay {
+	position: absolute;
+	width:100%;
+	top:0px;
+	height:100%;
+	background-color:black;
+	opacity:.5;	z-index:40001;
+}
+.vertical-offset { 
+	position:fixed;
+	top:50px;
+	width:100%;
+	z-index:40002;
+	}
+.dumbBox{
+	width:820px;
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:white;
+	border:1px solid black;
+	border-radius: 5px;
+}
+.dumbBox img{
+	padding: 10px;
+	width: 800px;
+	height: 600px;
+}

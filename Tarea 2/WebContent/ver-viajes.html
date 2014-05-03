@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DCC Express</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<script type="text/javascript" src="validadores.js"></script>
+	<script type="text/javascript">
+		var aData = [
+			[
+				{t:'s',v:'Buenos Aires'},{t:'s',v:'Córdoba'},{t:'s',v:'2014-03-01'},
+				{t:'s',v:'2014-04-01'},{t:'s',v:'20x20x20'},
+				{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'}
+			],
+			[
+				{t:'s',v:'Córdoba'},{t:'s',v:'Córdoba'},{t:'s',v:'2014-03-15'},
+				{t:'s',v:'2014-04-01'},{t:'s',v:'10x10x10'},
+				{t:'s',v:'200gr'},{t:'s',v:'hola@chao.com'}
+			],
+			[
+				{t:'s',v:'Mendoza'},{t:'s',v:'Córdoba'},{t:'s',v:'2014-05-15'},
+				{t:'s',v:'2014-05-20'},{t:'s',v:'30x30x30'},
+				{t:'s',v:'1 Kg'},{t:'s',v:'hola@chao.com'}
+			],
+			[
+				{t:'s',v:'Santiago'},{t:'s',v:'Antofagasta'},{t:'s',v:'2014-07-08'},
+				{t:'s',v:'2014-07-15'},{t:'s',v:'10x10x10'},
+				{t:'s',v:'100gr'},{t:'s',v:'hola@chao.com'}
+			],
+			[
+				{t:'s',v:'Concepción'},{t:'s',v:'Copiapó'},{t:'s',v:'2014-10-01'},
+				{t:'s',v:'2014-10-12'},{t:'s',v:'30x30x30'},
+				{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'}
+			],
+			[
+				{t:'s',v:'Cusco'},{t:'s',v:'Santiago'},{t:'s',v:'2014-12-09'},
+				{t:'s',v:'2014-12-01'},{t:'s',v:'20x20x20'},
+				{t:'s',v:'800gr'},{t:'s',v:'hola@chao.com'}
+			],
+			[
+				{t:'s',v:'Lima'},{t:'s',v:'Cusco'},{t:'s',v:'2014-06-21'},
+				{t:'s',v:'2014-06-19'},{t:'s',v:'10x10x10'},
+				{t:'s',v:'1.5 kg'},{t:'s',v:'hola@chao.com'}
+			],
+		];
+
+		function verDetalle( oRow ){
+			window.location.href = "informacion-viaje.html";
+		}
+
+		function ini(){
+
+			fillTable("viajes", aData	);	
+		}
+	</script>
+</head>
+<body onload="ini()">
+
+	<div class="principal" >
+		<h1>DCC Express!!!</h1>
+		<br/>
+		<div class="botones">
+			<a class="boton" href="agregar-viaje.html" >Agregar Viaje</a>
+			<a class="boton" href="agregar-encargo.html" >Agregar Encargo</a>
+			<a class="boton" href="ver-viajes.html" >Ver Viajes</a>
+			<a class="boton" href="ver-encargos.html" >Ver Encargos</a>
+		</div>
+		<br/>
+		<div class="tabla">
+			<table id="viajes">
+				<tr>
+					<td>Origen</td>
+					<td>Destino</td>
+					<td>Fecha Ida</td>
+					<td>Fecha Llegada</td>
+					<td>Espacio</td>
+					<td>Kilos</td>
+					<td>Email</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
