@@ -1,0 +1,65 @@
+<?php
+
+
+
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DCC Express</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+
+	<div class="principal" >
+		<h1>DCC Express!!!</h1>
+		<br/>
+		<div class="botones">
+			<a class="boton" href="agregar-viaje.php" >Agregar Viaje</a>
+			<a class="boton" href="agregar-encargo.php" >Agregar Encargo</a>
+			<a class="boton" href="ver-viajes.php" >Ver Viajes</a>
+			<a class="boton" href="ver-encargos.php" >Ver Encargos</a>
+		</div>
+		<br/>
+
+		<div class="tabla">
+			<table>
+				<tr>
+					<td>País Origen: </td><td> <b>Argentina</b></td>
+				</tr>
+				<tr>
+					<td>Ciudad Origen: </td><td> <b>Buenos Aires</b></td>
+				</tr>
+				<tr>
+					<td>País Destino: </td><td> <b>Argentina</b></td>
+				</tr>
+				<tr>
+					<td>Ciudad Destino: </td><td> <b>Córdoba</b></td>
+				</tr>
+				<tr>
+					<td>Fecha Ida: </td><td> <b>2014-03-01</b> </td>
+				</tr>
+				<tr>
+					<td>Fecha Llegada: </td><td><b>2014-04-01</b> </td>
+				</tr>
+				<tr>
+					<td>Espacio: </td><td> <b>20x20x20</b> </td>
+				</tr>
+				<tr>
+					<td>Kilos: </td><td> <b>800 gr</b></td>
+				</tr>
+				<tr>
+					<td>Email: </td><td> <b>hola@chao.com</b> </td>
+				</tr>
+				<tr>
+					<td>Número de celular: </td><td> <b>+56 9 123 45 678</b> </td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	</div>
+
+</body>
+</html>

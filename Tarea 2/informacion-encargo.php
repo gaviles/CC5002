@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DCC Express</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<script type="text/javascript">
+function togleModal(){
+    var oModal = document.getElementById('modal');
+    var sDisplay =	oModal.style.display;
+
+    if( sDisplay === "" || sDisplay === "none" ){
+            oModal.style.display = "block";
+    }else
+    {
+            oModal.style.display = "none";
+    }
+}
+	</script>
+</head>
+<body>
+
+
+
+	<div class="principal" >
+		<h1>DCC Express!!!</h1>
+		<br/>
+		<div class="botones">
+			<a class="boton" href="agregar-viaje.php" >Agregar Viaje</a>
+			<a class="boton" href="agregar-encargo.php" >Agregar Encargo</a>
+			<a class="boton" href="ver-viajes.php" >Ver Viajes</a>
+			<a class="boton" href="ver-encargos.php" >Ver Encargos</a>
+		</div>
+		<br/>
+		<div class="tabla">
+			<div class="imagen-envio-mediana" onclick="togleModal()" >
+				<img alt="imagen encargo mediana" src="img/medium/1.jpg" />
+			</div>
+			<table class="tabla-detalles">
+				<tr>
+					<td>País Origen: </td><td> <b>Argentina</b></td>
+				</tr>
+				<tr>
+					<td>Ciudad Origen: </td><td> <b>Buenos Aires</b></td>
+				</tr>
+				<tr>
+					<td>País Destino: </td><td> <b>Argentina</b></td>
+				</tr>
+				<tr>
+					<td>Ciudad Destino: </td><td> <b>Córdoba</b></td>
+				</tr>
+				<tr>
+					<td>Espacio: </td><td> <b>20x20x20</b> </td>
+				</tr>
+				<tr>
+					<td>Kilos: </td><td> <b>800 gr</b></td>
+				</tr>
+				<tr>
+					<td>Email: </td><td> <b>hola@chao.com</b> </td>
+				</tr>
+				<tr>
+					<td>Número de celular: </td><td> <b>+56 9 123 45 678</b> </td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="dumbBoxWrap" id="modal" onclick="togleModal()" >
+		<div class="dumbBoxOverlay"></div>
+		<div class="vertical-offset">
+			<div class="dumbBox">
+				<img alt="imagen producto grande" src="img/big/1.jpg" />
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
