@@ -17,7 +17,7 @@ function apendOption( oSelection, sValue, sCaption  ){
  * sends ajax petition 
  * @returns {undefined}
  */
-function ajax_request( $variableName, $value, $callback ){
+function ajax_json( $variableName, $value, $callback ){
     
     if (window.XMLHttpRequest) {
         xmlhttp=new XMLHttpRequest();
@@ -27,10 +27,14 @@ function ajax_request( $variableName, $value, $callback ){
     
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-            $callback( xmlhttp.responseText );
+            console.log(xmlhttp.responseText);
+            $response = JSON.parse(xmlhttp.responseText);
+            console.log($response);
+            $callback( $response );
         }
     }
-    xmlhttp.open("GET", "ajax.php?"+$variableName+"="+$value );
+    xmlhttp.open("GET", "ajax.php?request="+$variableName+"&value="+$value );
+    console.log("ajax.php?request="+$variableName+"&value="+$value);
     xmlhttp.send();
 }
 	
@@ -59,17 +63,20 @@ function removeSuggestion( oSelect ){
 }
 
 function setCiudades( oCiudadSelection, sPais ){
-
+        
     for(var i= 0; i < aCountries.length ; i++){
 
-            if(aCountries[i].name === sPais  ){
-                    // Reset the content of the given selection
-                    oCiudadSelection.innerHTML = "";
-                    apendOption( oCiudadSelection, "", "Seleccione una Ciudad" );
-                    for( var j=0 ; j < aCountries[i].cities.length ; j++ ){
-                            apendOption( oCiudadSelection, aCountries[i].cities[j].name, aCountries[i].cities[j].name );
-                    }
-            }
+        if(aCountries[i].name === sPais  ){   
+            // Reset the content of the given selection
+            oCiudadSelection.innerHTML = "";
+            apendOption( oCiudadSelection, "", "Seleccione una Ciudad" );
+            ajax_json( "ciudades", aCountries[i].iso, function( response ){
+                for( var j=0,max=response.length ; j < max ; j++ ){
+                    apendOption( oCiudadSelection, response[j].id, response[j].name );
+                }
+            });
+            break;
+        }
     }
 }
 

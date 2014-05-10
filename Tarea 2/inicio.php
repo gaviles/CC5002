@@ -1,5 +1,5 @@
 <?php 
-    include_once 'database_controller.php';
+    include_once 'app/ini.php';
 ?>
 
 <!DOCTYPE HTML>
