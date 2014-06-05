@@ -1,3 +1,8 @@
+
+ul{
+    margin: 0px;
+}
+
 #map-canvas{
     position:fixed;
     width: 800px;
@@ -16,6 +21,16 @@
 #next-page{
     position: absolute;
     right: 26px;
+}
+
+.info-window td{
+    vertical-align: top;
+    padding-right: 5px;
+}
+
+.info-window tr:first-child td:first-child{
+    border-right-style: solid;
+    border-right-width: 1px;
 }
 
 .clickme{

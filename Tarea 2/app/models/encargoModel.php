@@ -68,6 +68,7 @@ class EncargoModel{
                 "kilos"=>$this->databaseModel->kilos->getById($aData[$i]['kilos']),
                 "email"=>$aData[$i]['email_encargador'],
                 "imagen"=>$aData[$i]['imagen'],
+                "descripcion"=>$aData[$i]['descripcion'],
                 "id"=>$aData[$i]['id']
                 ];
         }

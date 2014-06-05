@@ -12,7 +12,7 @@ class DatabaseController{
         // Usuario MySQL
 	private static $db_user = "root";
         // Password
-	private static $db_pass = "";
+	private static $db_pass = "hola";
         // Servidor donde esta alojado, puede ser 'localhost' o una IP (externa o interna).
 	private static $db_host = "localhost";
         // Mysqlli object connection
