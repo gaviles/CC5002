@@ -1,0 +1,14 @@
+<?php
+
+
+
+class DataManipulator{
+	
+	private $objectDatabase;
+	
+	public function __construct($sUrl, $sUser, $sPassword, $sDatabase){
+		$this->objectDatabase = new DatabaseController($sUrl, $sUser, $sPassword, $sDatabase)	
+	}
+	
+	
+}

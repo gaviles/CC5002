@@ -1,0 +1,10 @@
+<?php
+
+class CiudadManipulator extends DataManipulator{
+	
+	private $objectDatabase;
+	
+	public function __construct( $object ){
+		$this->objectDatabase = $object;
+	}
+}

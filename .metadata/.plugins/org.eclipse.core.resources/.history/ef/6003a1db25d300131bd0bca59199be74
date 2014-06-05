@@ -1,0 +1,12 @@
+<?php
+/**
+ * Index file inizialize the php components to use
+ */
+
+include_once '/kernel/databaseController.php';
+include_once '/kernel/model/dataManipulator.php';
+include_once '/kernel/file/fileController.php';
+include_once '/kernel/requestController.php';
+
+$dataManipulator = new DataManipulator('localhost','root','hola','tarea2');
+

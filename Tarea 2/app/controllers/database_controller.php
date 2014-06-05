@@ -12,7 +12,7 @@ class DatabaseController{
         // Usuario MySQL
 	private static $db_user = "root";
         // Password
-	private static $db_pass = "hola";
+	private static $db_pass = "";
         // Servidor donde esta alojado, puede ser 'localhost' o una IP (externa o interna).
 	private static $db_host = "localhost";
         // Mysqlli object connection
@@ -31,13 +31,14 @@ class DatabaseController{
             
             $result = self::$mysqli->query($string);
             $res = array();
-            if( $result !== true ){
+            if( gettype($result) !== "boolean" ){
                 while($row = mysqli_fetch_array($result)) {
                   $res[] = $row;
                 }
                 return $res;
+            }else{
+                return $result;
             }
-            return true;
         }
         
         public function toString($string){
@@ -69,9 +70,11 @@ class DatabaseController{
 	}
 	
 	public function toDate($date){
-            $d = DateTime::createFromFormat('Y-m-d', $date);
-            if( $d && $d->format('Y-m-d') == $date ){
-                return $date;
+            
+            $aDate = explode("-", $date);
+            
+            if( checkdate($aDate[1],$aDate[2],$aDate[0]) ){
+                return $aDate[0]."-".$aDate[1]."-".$aDate[2];
             }
             return null;
 	}

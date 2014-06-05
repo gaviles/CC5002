@@ -11,17 +11,14 @@ include_once 'app/ini.php';
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<script type="text/javascript" src="validadores.js"></script>
 	<script type="text/javascript">
-
-	function verDetalle(){
-		window.location.href = "informacion-encargo.php";
-	}
-
-	function ini(){
-		var aData = <?php echo $db->encargo->getParsed(); ?>;
-
-		fillTable("encargos", aData );
-	}
-
+            page = 0;
+            function verDetalle(element){
+                    window.location.href = "informacion-encargo.php?id="+element.id;
+            }
+            function ini(){
+                    var aData = <?php echo $db->encargo->getParsed(); ?>;
+                    fillTable("encargos", aData );
+            }
 	</script>
 </head>
 <body onload="ini()">
@@ -35,7 +32,9 @@ include_once 'app/ini.php';
 			<a class="boton" href="ver-viajes.php" >Ver Viajes</a>
 			<a class="boton" href="ver-encargos.php" >Ver Encargos</a>
 		</div>
-		<br/>
+		<p id="msg">
+                    <?php if(isset( $sMessage )){ echo $sMessage;} ?>
+                </p>
 		<div class="tabla">
 			<table >
                             <thead>
@@ -48,6 +47,8 @@ include_once 'app/ini.php';
                             </thead>
                             <tbody id="encargos"></tbody>
 			</table>
+                    <span id="prev-page" class="clickme" onclick="prevPage('encargo')">Anterior</span>
+                    <span id="next-page" class="clickme" onclick="nextPage('encargo')" >Siguiente</span>
 		</div>
 	</div>
 

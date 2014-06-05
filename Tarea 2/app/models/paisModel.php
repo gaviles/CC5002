@@ -49,16 +49,24 @@ class PaisModel{
         return $sArray;
     }
     
+    public function getById( $id ){
+        $id = $this->dataBase->toString($id);
+        $sql = "SELECT * FROM pais WHERE id = '{$id}';";
+        $return = $this->dataBase->query($sql);
+        
+        if(count($return) == 0){
+            return array();
+        }else{
+            return $return[0]['nombre'];
+        }
+    }
+    
     /**
      * Returns a Bollean, depending if the given number is in the table as an id.
      * @param type $id, is an id of the table ciudad
      */
     public function isValid( $id ){
-        
-        $id = $this->dataBase->toString($id);
-        $sql = "SELECT id FROM pais WHERE id = '{$id}';";
-        $return = $this->dataBase->query($sql);
-        
+        $return = $this->getById($id);
         if(count($return) == 0){
             return false;
         }

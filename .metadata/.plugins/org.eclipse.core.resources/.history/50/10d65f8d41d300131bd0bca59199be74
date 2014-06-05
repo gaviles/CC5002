@@ -1,0 +1,27 @@
+<?php
+
+
+include_once '/manipulators/ciudad.php';
+include_once '/manipulators/encargo.php';
+include_once '/manipulators/pais.php';
+include_once '/manipulators/viaje.php';
+
+class DataManipulator{
+	
+	protected $objectDatabase;
+	public  $ciudad,
+			$encargo,
+			$pais,
+			$viaje;
+	
+	
+	public function __construct($sUrl, $sUser, $sPassword, $sDatabase){
+		
+		$this->objectDatabase = new DatabaseController($sUrl, $sUser, $sPassword, $sDatabase);
+		
+		$this->ciudad = new CiudadManipulator();
+		$this->encargo = new EncargoManipulator();
+		$this->pais = new PaisManipulator();
+		$this->viaje = new ViajeManipulator();
+	}
+}

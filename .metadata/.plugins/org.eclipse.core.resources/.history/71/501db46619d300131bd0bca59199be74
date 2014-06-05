@@ -1,0 +1,39 @@
+<?php
+
+
+class RequestController {
+	
+	public function __construct(){
+		
+	}
+	
+	/**
+	 * Returns the the element from the request, if it doesnt exist
+	 * returns null.
+	 * @param $string of the post element that will be requested
+	 */
+	public function getPost($string){
+		
+	}
+	
+	/**
+	 * Returns the element json parsed, if is not possible to parse or
+	 * the element doesnt exist will return null.
+	 * 
+	 * @param $string, of the post element json ecoded
+	 */
+	public function getFromJsonPost($string){
+		
+	}
+	
+	/**
+	 * Returns the the element from the request, if it doesnt exist
+	 * returns null.
+	 * @param $string of the post element that will be requested
+	 */
+	public function getGet($string){
+		
+	}
+}
+
+?>

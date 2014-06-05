@@ -87,8 +87,9 @@ include_once 'app/ini.php';
 			<a class="boton" href="ver-viajes.php" >Ver Viajes</a>
 			<a class="boton" href="ver-encargos.php" >Ver Encargos</a>
 		</div>
-		<br/>
-
+		<p id="msg">
+                    <?php if(isset( $sMessage )){ echo $sMessage;} ?>
+                </p>
 		<form action="guardar.php?form=viaje" method="POST" onsubmit="return validarFormulario()" >
 		<table class="tabla-formulario">
 			<tr>
@@ -127,7 +128,7 @@ include_once 'app/ini.php';
 				</td>
 				<td>
 					<select id="ciudad-destino" name="ciudad-destino">
-						<option value="buenos_aires" >Seleccione un País primero</option>
+						<option value="" >Seleccione un País primero</option>
 					</select>
 				</td>
 			</tr>
@@ -153,9 +154,12 @@ include_once 'app/ini.php';
 				</td>
 				<td>
 					<select id="espacio-disponible" name="espacio-disponible">
-						<option value="10x10x10" >10x10x10</option>
-						<option value="20x20x20" >20x20x20</option>
-						<option value="30x30x30" >30x30x30</option>
+                                            <?php
+                                                $espacios = $db->espacio->read();
+                                                foreach( $espacios as $espacio ){
+                                                    echo "<option value=\"".$espacio['id']."\" >".$espacio['valor']."</option>";
+                                                }
+                                            ?>
 					</select>
 				</td>
 			</tr>
@@ -165,12 +169,12 @@ include_once 'app/ini.php';
 				</td>
 				<td>				
 					<select id="kilos-disponibles" name="kilos-disponibles">
-						<option value="200gr" >200 gr</option>
-						<option value="500gr" >500 gr</option>
-						<option value="800gr" >800 gr</option>
-						<option value="1kg" >1 kg</option>
-						<option value="1.5kg" >1.5 kg</option>
-						<option value="2kg" >2 kg</option>
+                                            <?php
+                                                $pesos = $db->kilos->read();
+                                                foreach( $pesos as $peso ){
+                                                    echo "<option value=\"".$peso['id']."\" >".$peso['valor']."</option>";
+                                                }
+                                            ?>
 					</select>
 				</td>
 			</tr>

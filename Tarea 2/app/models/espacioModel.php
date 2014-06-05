@@ -24,7 +24,7 @@ class EspacioModel{
     
     /**
      * 
-     * @param type $id, espacio id
+     * @param type id, espacio id
      * @return type string, given espacio value
      */
     public function getById($id){
@@ -40,7 +40,7 @@ class EspacioModel{
     
     /**
      * Returns a Bollean, depending if the given number is in the table as an id.
-     * @param type $id, is an id of the table espacio_encargo
+     * @param type id, is an id of the table espacio_encargo
      */
     public function isValid( $id ){
         

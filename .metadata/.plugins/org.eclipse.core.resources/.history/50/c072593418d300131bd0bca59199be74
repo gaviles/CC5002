@@ -1,0 +1,12 @@
+<?php
+/**
+ * Index file inizialize the php components to use
+ */
+
+include_once '/kernel/databaseController.php';
+include_once '/kernel/primitive/fileController.php';
+include_once '/kernel/primitive/imageController.php';
+
+$GLOBALS['db'] = new DatabaseController('localhost','root','hola','tarea2');
+
+

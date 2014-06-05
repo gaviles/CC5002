@@ -1,0 +1,23 @@
+<?php
+
+class ViajeManipulator extends DataManipulator{
+	
+	private $objectDatabase;
+	
+	public function __construct( $object ){
+		$this->objectDatabase = $object;
+	}
+	
+	public function add($origen, $destino, $fecha_ida, $fecha_regreso, $kilos_disponible, $espacio_disponible, $email_viajero, $celular_viajero){
+			
+		$query  = "INSERT INTO  viaje ( origen,
+				destino,
+				fecha_ida,
+				fecha_regreso,
+				kilos_disponible,
+				espacio_disponible,
+				email_viajero,
+				celular_viajero) VALUES 
+				(".")";
+	}
+}

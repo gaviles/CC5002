@@ -1,3 +1,26 @@
+#map-canvas{
+    position:fixed;
+    width: 800px;
+    height: 450px;
+}
+
+#prev-page{
+    
+}
+
+#msg{
+    width: 100%;
+    text-align: center;
+}
+
+#next-page{
+    position: absolute;
+    right: 26px;
+}
+
+.clickme{
+    cursor: pointer;
+}
 
 .principal {
 	position: relative;

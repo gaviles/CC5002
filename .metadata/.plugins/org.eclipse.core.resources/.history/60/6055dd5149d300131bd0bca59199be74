@@ -1,0 +1,40 @@
+<?php
+/**
+ * Index file inizialize the php components to use
+ */
+
+include_once '/kernel/databaseController.php';
+include_once '/kernel/model/dataManipulator.php';
+include_once '/kernel/file/fileController.php';
+include_once '/kernel/requestController.php';
+
+$dataManipulator = new DataManipulator('localhost','root','hola','tarea2');
+
+class ap{
+	
+	protected $lala = "lapilini";
+	
+}
+
+class op extends ap{
+	
+	public function mes(){
+		
+		echo "start".PHP_EOL;
+		echo $this->lala;	
+	}	
+}
+
+$a = new op();
+$a->mes(); 
+
+echo "<pre>";
+echo PHP_EOL;
+echo mysql_real_escape_string(" ' or 1=1 ");
+echo PHP_EOL;
+echo mysql_real_escape_string(" OR ");
+echo PHP_EOL;
+echo mysql_real_escape_string(" ' \" DROP  ");
+echo PHP_EOL;
+echo mysql_real_escape_string(' " " ; ' );
+echo "</pre>";

@@ -32,14 +32,18 @@ class CiudadModel{
      * an empty array.
      * @param type $id, id of an existing insertion in ciudad table
      */
-    public function getById( $id ){
+    public function getById( $id, $bFullReturn = false ){
         
         $id = $this->dataBase->toInt($id);
         
         $sql = "SELECT * FROM ciudad WHERE id = '{$id}';";
         $return = $this->dataBase->query($sql);
         if( count($return) > 0 ){
-            return $return[0]['nombre'];
+            if($bFullReturn){
+                return $return[0];
+            }else{
+                return $return[0]['nombre'];
+            }
         }
         return $return;
     }

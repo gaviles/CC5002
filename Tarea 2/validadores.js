@@ -14,10 +14,13 @@ function apendOption( oSelection, sValue, sCaption  ){
 }
 
 /**
- * sends ajax petition 
+ * Sends Ajax request to the ajax json port in the php
+ * @param {string} variableName
+ * @param {object} value
+ * @param {function( json_response )} callback
  * @returns {undefined}
  */
-function ajax_json( $variableName, $value, $callback ){
+function ajax_json( variableName, value, callback ){
     
     if (window.XMLHttpRequest) {
         xmlhttp=new XMLHttpRequest();
@@ -26,15 +29,15 @@ function ajax_json( $variableName, $value, $callback ){
     }
     
     xmlhttp.onreadystatechange = function(){
-        if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+        if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
             console.log(xmlhttp.responseText);
-            $response = JSON.parse(xmlhttp.responseText);
-            console.log($response);
-            $callback( $response );
+            response = JSON.parse(xmlhttp.responseText);
+            console.log(response);
+            callback( response );
         }
-    }
-    xmlhttp.open("GET", "ajax.php?request="+$variableName+"&value="+$value );
-    console.log("ajax.php?request="+$variableName+"&value="+$value);
+    };
+    xmlhttp.open("GET", "ajax.php?request="+variableName+"&value="+value );
+    console.log("ajax.php?request="+variableName+"&value="+value);
     xmlhttp.send();
 }
 	
@@ -164,13 +167,18 @@ function fillTable( sTableID, aData ){
 
 	console.log("rellenando tabla");
 	var oTabla = document.getElementById(sTableID);
-
+        
+        // remove the elemnt of the table
+        oTabla.innerHTML = "";
+        
 	for( var i=0 ; i < aData.length ; i++ ){
 
 		var oRow = document.createElement("tr");
 		oRow.setAttribute( "onclick","verDetalle(this)" );
+                console.log(aData[i]);
+                oRow.setAttribute( "id", aData[i][(aData[i].length-1)].id );
 
-		for( var j=0 ; j < aData[i].length ; j++ ){
+		for( var j=0,max=aData[i].length ; j < (max-1) ; j++ ){
 
 			var oCell = document.createElement("td");
 
@@ -183,4 +191,58 @@ function fillTable( sTableID, aData ){
 		}
 		oTabla.appendChild(oRow);
 	}
+}
+
+/**
+ * moves to the next page 
+ * @param {type} sType ["viaje","encargo"]
+ * @returns {undefined}
+ */
+function nextPage( sType ){
+    console.log(page);
+    var sTarget = "";
+    var sTableID = "";
+    if( sType === "viaje" ){
+        sTarget = "page_viaje";
+        sTableID = "viajes";
+    }else if( sType === "encargo" ){
+        sTarget = "page_encargo";
+        sTableID = "encargos";
+    }
+    ajax_json(sTarget,(page+1),function( response ){
+            console.log(response);
+            if( page !== response.iPage ){
+                page = parseInt(response.iPage);
+                fillTable( sTableID, eval(response.aData) );
+            }
+        });
+}
+
+/**
+ * moves to the prev page
+ * @param {type} sType ["viaje","encargo"]
+ * @returns {undefined}
+ */
+function prevPage( sType ){
+    if( page <= 0 ){
+        page = 0;
+        return;
+    }
+    
+    var sTarget = "";
+    var sTableID = "";
+    if( sType === "viaje" ){
+        sTarget = "page_viaje";
+        sTableID = "viajes";
+    }else if( sType === "encargo" ){
+        sTarget = "page_encargo";
+        sTableID = "encargos";
+    }
+    ajax_json(sTarget,(page-1),function( response ){
+            console.log(response);
+            if( page !== response.iPage ){
+                page = parseInt(response.iPage);
+                fillTable( sTableID, eval(response.aData) );
+            }
+        });
 }

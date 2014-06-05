@@ -1,0 +1,12 @@
+<?php
+
+
+
+include 'manipulatorInterface.php';
+
+class DataManipulator{
+	
+	public function __construct(){
+		
+	}	
+}

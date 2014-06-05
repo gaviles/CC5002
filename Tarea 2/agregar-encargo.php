@@ -11,7 +11,9 @@ include_once 'app/ini.php';
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<script type="text/javascript" src="validadores.js"></script>
 	<script type="text/javascript">
-
+                
+                aCountries = <?php echo $db->pais->getJsParsed(); ?>;
+                
 		function validarFormulario(){
 
 			console.log("validar");
@@ -74,9 +76,10 @@ include_once 'app/ini.php';
 			<a class="boton" href="ver-viajes.php" >Ver Viajes</a>
 			<a class="boton" href="ver-encargos.php" >Ver Encargos</a>
 		</div>
-		<br/>
-		<form action="guardar.php?form=encargo" enctype="multipart/form-data" method="POST" onsubmit="return validarFormulario()" >
-
+		<p id="msg">
+                    <?php if(isset( $sMessage )){ echo $sMessage;} ?>
+                </p>
+		<form action="guardar.php?form=encargo" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()" >
 			<table class="tabla-formulario">
 				<tr>
 					<td>Descripción Encargo: </td>
@@ -88,11 +91,9 @@ include_once 'app/ini.php';
 						<select id="espacio-solicitado" name="espacio-solicitado">
                                                     <?php
 							$espacios = $db->espacio->read();
-              
                                                         foreach( $espacios as $espacio ){
                                                             echo "<option value=\"".$espacio['id']."\" >".$espacio['valor']."</option>";
                                                         }
-                                                        
                                                     ?>
 						</select>
 					</td>
@@ -103,11 +104,9 @@ include_once 'app/ini.php';
 						<select id="kilos-solicitados" name="kilos-solicitados">
                                                     <?php
 							$pesos = $db->kilos->read();
-              
                                                         foreach( $pesos as $peso ){
                                                             echo "<option value=\"".$peso['id']."\" >".$peso['valor']."</option>";
                                                         }
-                                                        
                                                     ?>
 						</select>
 					</td>
@@ -160,7 +159,7 @@ include_once 'app/ini.php';
 					<td><input type="text" name="celular" size="15"></td>
 				</tr>
 				<tr>
-					<td></td><td><input type="submit" value="Enviar" /></td>
+					<td></td><td><input type="submit" name="submit" value="Enviar" /></td>
 				</tr>
 			</table>
 

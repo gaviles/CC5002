@@ -2,6 +2,8 @@
 
 include_once 'app/ini.php';
 
+$db->viaje->getParsed();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -12,16 +14,16 @@ include_once 'app/ini.php';
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<script type="text/javascript" src="validadores.js"></script>
 	<script type="text/javascript">
-		var aData = <?php echo $db->viaje->getParsed(); ?>;
+            var aData = <?php echo $db->viaje->getParsed(); ?>;
+            page = 0;
+            function verDetalle( oRow ){
+                    window.location.href = "informacion-viaje.php?id="+oRow.id;
+            }
 
-		function verDetalle( oRow ){
-			window.location.href = "informacion-viaje.php";
-		}
+            function ini(){
 
-		function ini(){
-
-			fillTable("viajes", aData );	
-		}
+                    fillTable("viajes", aData );	
+            }
 	</script>
 </head>
 <body onload="ini()">
@@ -35,7 +37,9 @@ include_once 'app/ini.php';
 			<a class="boton" href="ver-viajes.php" >Ver Viajes</a>
 			<a class="boton" href="ver-encargos.php" >Ver Encargos</a>
 		</div>
-		<br/>
+                <p id="msg">
+                    <?php if(isset( $sMessage )){ echo $sMessage;} ?>
+                </p>
 		<div class="tabla">
 			<table>
                             <theader>
@@ -50,6 +54,8 @@ include_once 'app/ini.php';
                             <tbody id="viajes"></tbody>
 			</table>
 		</div>
+                <span id="prev-page" class="clickme" onclick="prevPage('viaje')">Anterior</span>
+                <span id="next-page" class="clickme" onclick="nextPage('viaje')" >Siguiente</span>
 	</div>
 </body>
 </html>

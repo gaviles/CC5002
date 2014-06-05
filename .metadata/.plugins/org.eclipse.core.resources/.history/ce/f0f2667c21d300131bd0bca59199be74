@@ -1,0 +1,8 @@
+<?php
+
+
+class DataManipulator extends DatabaseController{
+	
+	// Contructor in DatabaseController.
+	
+}

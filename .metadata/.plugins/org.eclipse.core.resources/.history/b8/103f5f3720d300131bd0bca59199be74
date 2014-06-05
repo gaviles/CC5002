@@ -1,0 +1,53 @@
+<?php
+/**
+ * Index file inizialize the php components to use
+ */
+
+include_once '/kernel/databaseController.php';
+include_once '/kernel/model/dataManipulator.php';
+include_once '/kernel/primitive/fileController.php';
+include_once '/kernel/primitive/imageController.php';
+
+$dataManipulator = new DataManipulator('localhost','root','hola','tarea2');
+
+
+
+class be {
+	
+	private $bebe;
+	
+	public function __construct($la){
+		echo "be: ".$la.PHP_EOL;
+		$this->bebe = $la." be bebe,";
+		echo $this->bebe;
+	}
+
+	public function get(){
+		echo " holi  ";
+		echo $this->bebe;
+		return $this->bebe;
+	}
+}
+
+class la extends be{
+	
+	private $bebe = "la bebe,";
+	
+	/*
+	public function __construct($la){
+		echo "la: ".$la.PHP_EOL;
+	}
+	*/
+	
+	public function la(){
+		return parent::get()." bela,";	
+	}
+}
+
+echo "<pre>";
+echo "be: ".PHP_EOL;
+$pip = new be("mom");
+echo "la: ".PHP_EOL;
+$pop = new la("mom");
+echo $pop->la();
+echo "</pre>";
