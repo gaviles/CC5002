@@ -56,24 +56,33 @@
 				<img alt="imagen encargo mediana" src="img/medium/<?php echo $aEncargo['imagen']; ?>" />
 			</div>
 			<table class="tabla-detalles">
-				<tr>
-					<td>Ciudad Origen: </td><td><b><?php echo $db->ciudad->getById($aEncargo['origen']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Ciudad Destino: </td><td><b><?php echo $db->ciudad->getById($aEncargo['destino']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Espacio: </td><td><b><?php echo $db->espacio->getById($aEncargo['espacio']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Kilos: </td><td><b><?php echo $db->kilos->getById($aEncargo['kilos']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Email: </td><td><b><?php echo $aEncargo['email_encargador']; ?></b></td>
-				</tr>
-				<tr>
-					<td>Numero de celular: </td><td><b><?php echo $aEncargo['celular_encargador']; ?></b></td>
-				</tr>
+                            <tr>
+                                <td>Descripción: </td><td><b><?php echo $aEncargo['descripcion']; ?></b></td>
+                            </tr>                            
+                            <tr>
+                                <td>País Origen: </td><td><b><?php echo $aEncargo['pais-origen']; ?></b></td>
+                            </tr>
+                            <tr>
+				<td>Ciudad Origen: </td><td><b><?php echo $aEncargo['ciudad-origen']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>País Destino: </td><td><b><?php echo $aEncargo['pais-destino']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad Destino: </td><td><b><?php echo $aEncargo['ciudad-destino']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Espacio: </td><td><b><?php echo $aEncargo['espacio']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Kilos: </td><td><b><?php echo $aEncargo['kilos']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Email: </td><td><b><?php echo $aEncargo['email']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Número de celular: </td><td><b><?php echo $aEncargo['celular_encargador']; ?></b></td>
+                            </tr>
 			</table>
 		</div>
                 <span style="display:<?php if( !$bValid ){ echo "block"; }else{ echo "none"; } ?>">

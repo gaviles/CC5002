@@ -47,7 +47,11 @@ class ViajeModel{
     public function getById( $id ){
         $id = $this->dataBase->toString($id);
         $sql = "SELECT * FROM viaje WHERE id = {$id} LIMIT 1;";
-        return  $this->dataBase->query($sql);
+        $aViajes = $this->dataBase->query($sql);
+        if( Count( $aViajes )== 1 ){
+            return  [$this->formatter($aViajes[0])];
+        }
+        return [];
     }
     
     /**
@@ -71,25 +75,29 @@ class ViajeModel{
         $iMax = count($aData);
         $aReturn = [];
         for( $i = 0; $i < $iMax; $i++ ){
-            $ciudadOrigen = $this->databaseModel->ciudad->getById($aData[$i]['origen'],true );
-            $ciudadDestino = $this->databaseModel->ciudad->getById($aData[$i]['destino'],true);
-            $paisOrigen = $this->databaseModel->pais->getById( $ciudadOrigen['pais'] );
-            $paisDestino = $this->databaseModel->pais->getById( $ciudadDestino['pais'] );
-            $aReturn[] = [
-                "ciudad-origen"=>$ciudadOrigen['nombre'],
-                "ciudad-destino"=>$ciudadDestino['nombre'],
-                "pais-destino"=>$paisDestino,
-                "pais-origen"=>$paisOrigen,
-                "espacio"=>$this->databaseModel->espacio->getById($aData[$i]['espacio_disponible']),
-                "kilos"=>$this->databaseModel->kilos->getById($aData[$i]['kilos_disponible']),
-                "email"=>$aData[$i]['email_viajero'],
-                "fecha-ida"=>$aData[$i]['fecha_ida'],
-                "fecha-regreso"=>$aData[$i]['fecha_regreso'],
-                "id"=>$aData[$i]['id']
-                ];
+            $aReturn[] = $this->formatter($aData[$i]);
         }
         return $aReturn;
     } 
+    
+    public function formatter( $oViaje ){
+        $ciudadOrigen = $this->databaseModel->ciudad->getById($oViaje['origen'],true );
+        $ciudadDestino = $this->databaseModel->ciudad->getById($oViaje['destino'],true);
+        $paisOrigen = $this->databaseModel->pais->getById( $ciudadOrigen['pais'] );
+        $paisDestino = $this->databaseModel->pais->getById( $ciudadDestino['pais'] );
+        return ["ciudad-origen"=>$ciudadOrigen['nombre'],
+                "ciudad-destino"=>$ciudadDestino['nombre'],
+                "pais-destino"=>$paisDestino,
+                "pais-origen"=>$paisOrigen,
+                "espacio"=>$this->databaseModel->espacio->getById($oViaje['espacio_disponible']),
+                "kilos"=>$this->databaseModel->kilos->getById($oViaje['kilos_disponible']),
+                "email"=>$oViaje['email_viajero'],
+                "fecha-ida"=>$oViaje['fecha_ida'],
+                "fecha-regreso"=>$oViaje['fecha_regreso'],
+                "celular_viajero"=>$oViaje['celular_viajero'],
+                "id"=>$oViaje['id']
+                ];
+    }
     
     public function getParsed($page = ""){
         

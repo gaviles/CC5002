@@ -55,25 +55,31 @@ class EncargoModel{
         $iMax = count($aData);
         $aReturn = [];
         for( $i = 0; $i < $iMax; $i++ ){
-            $ciudadOrigen = $this->databaseModel->ciudad->getById($aData[$i]['origen'],true );
-            $ciudadDestino = $this->databaseModel->ciudad->getById($aData[$i]['destino'],true);
-            $paisOrigen = $this->databaseModel->pais->getById( $ciudadOrigen['pais'] );
-            $paisDestino = $this->databaseModel->pais->getById( $ciudadDestino['pais'] );
-            $aReturn[] = [
-                "ciudad-origen"=>$ciudadOrigen['nombre'],
-                "ciudad-destino"=>$ciudadDestino['nombre'],
-                "pais-destino"=>$paisDestino,
-                "pais-origen"=>$paisOrigen,
-                "espacio"=>$this->databaseModel->espacio->getById($aData[$i]['espacio']),
-                "kilos"=>$this->databaseModel->kilos->getById($aData[$i]['kilos']),
-                "email"=>$aData[$i]['email_encargador'],
-                "imagen"=>$aData[$i]['imagen'],
-                "descripcion"=>$aData[$i]['descripcion'],
-                "id"=>$aData[$i]['id']
-                ];
+            $aReturn[] = $this->formatter($aData[$i]);
         }
         return $aReturn;
     }
+    
+    private function formatter( $oEncargo ){
+        $ciudadOrigen = $this->databaseModel->ciudad->getById($oEncargo['origen'],true );
+        $ciudadDestino = $this->databaseModel->ciudad->getById($oEncargo['destino'],true);
+        $paisOrigen = $this->databaseModel->pais->getById( $ciudadOrigen['pais'] );
+        $paisDestino = $this->databaseModel->pais->getById( $ciudadDestino['pais'] );
+        return [
+            "ciudad-origen"=>$ciudadOrigen['nombre'],
+            "ciudad-destino"=>$ciudadDestino['nombre'],
+            "pais-destino"=>$paisDestino,
+            "pais-origen"=>$paisOrigen,
+            "espacio"=>$this->databaseModel->espacio->getById($oEncargo['espacio']),
+            "kilos"=>$this->databaseModel->kilos->getById($oEncargo['kilos']),
+            "email"=>$oEncargo['email_encargador'],
+            "imagen"=>$oEncargo['imagen'],
+            "descripcion"=>$oEncargo['descripcion'],
+            "celular_encargador"=>$oEncargo['celular_encargador'],
+            "id"=>$oEncargo['id']
+            ];
+    }
+    
     /**
      * Returns an string parsed javascript object
      * @param type $page
@@ -116,7 +122,11 @@ class EncargoModel{
         
         $id = $this->dataBase->toInt($id);
         $sql = "SELECT * FROM `encargo` WHERE id = {$id} LIMIT 1;";
-        return  $this->dataBase->query($sql);
+        $aEncargos = $this->dataBase->query($sql);
+        if( Count( $aEncargos )== 1 ){
+            return  [$this->formatter($aEncargos($sql)[0])];
+        }
+        return [];
     }
     
     /**

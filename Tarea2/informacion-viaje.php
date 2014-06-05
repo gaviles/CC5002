@@ -8,18 +8,20 @@ $viajeId = filter_input(INPUT_GET, 'id');
     
     $bValid = true;
     
-    if( $aViajes == false ){
+    $oViaje = [];
+    
+    if( count($aViajes) == 0 ){
         $bValid = false;
-        $aViaje['origen'] = "";
-        $aViaje['destino'] = "";
-        $aViaje['fecha_ida'] = "";
-        $aViaje['fecha_regreso'] = "";
-        $aViaje['espacio_disponible'] = "";
-        $aViaje['kilos_disponible'] = "";
-        $aViaje['email_viajero'] = "";
-        $aViaje['celular_viajero'] = "";
+        $oViaje['origen'] = "";
+        $oViaje['destino'] = "";
+        $oViaje['fecha_ida'] = "";
+        $oViaje['fecha_regreso'] = "";
+        $oViaje['espacio_disponible'] = "";
+        $oViaje['kilos_disponible'] = "";
+        $oViaje['email_viajero'] = "";
+        $oViaje['celular_viajero'] = "";
     }else{
-        $aViaje = $aViajes[0];
+        $oViaje = $aViajes[0];
     }
 ?>
 <!DOCTYPE HTML>
@@ -44,30 +46,36 @@ $viajeId = filter_input(INPUT_GET, 'id');
 
                 <div class="tabla" style="display:<?php if( !$bValid ){ echo "none";} ?>" >
 			<table>
-				<tr>
-					<td>Ciudad Origen: </td><td><b><?php echo $db->ciudad->getById($aViaje['origen']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Ciudad Destino: </td><td> <b><?php echo $db->ciudad->getById($aViaje['destino']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Fecha Ida: </td><td> <b><?php echo $aViaje['fecha_ida']; ?></b> </td>
-				</tr>
-				<tr>
-					<td>Fecha Llegada: </td><td><b><?php echo $aViaje['fecha_regreso']; ?></b> </td>
-				</tr>
-				<tr>
-					<td>Espacio: </td><td> <b><?php echo $db->espacio->getById($aViaje['espacio_disponible']); ?></b> </td>
-				</tr>
-				<tr>
-					<td>Kilos: </td><td> <b><?php echo $db->kilos->getById($aViaje['kilos_disponible']); ?></b></td>
-				</tr>
-				<tr>
-					<td>Email: </td><td> <b><?php echo $aViaje['email_viajero']; ?></b> </td>
-				</tr>
-				<tr>
-					<td>Número de celular: </td><td> <b><?php echo $aViaje['celular_viajero']; ?></b> </td>
-				</tr>
+                            <tr>
+                                <td>País Origen: </td><td><b><?php echo $oViaje['pais-origen']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad Origen: </td><td><b><?php echo $oViaje['ciudad-origen']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>País Destino: </td><td> <b><?php echo $oViaje['pais-destino']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad Destino: </td><td> <b><?php echo $oViaje['ciudad-destino']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Ida: </td><td> <b><?php echo $oViaje['fecha-ida']; ?></b> </td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Llegada: </td><td><b><?php echo $oViaje['fecha-regreso']; ?></b> </td>
+                            </tr>
+                            <tr>
+                                <td>Espacio: </td><td> <b><?php echo $oViaje['espacio']; ?></b> </td>
+                            </tr>
+                            <tr>
+                                <td>Kilos: </td><td> <b><?php echo $oViaje['kilos']; ?></b></td>
+                            </tr>
+                            <tr>
+                                <td>Email: </td><td> <b><?php echo $oViaje['email']; ?></b> </td>
+                            </tr>
+                            <tr>
+                                <td>Número de celular: </td><td> <b><?php echo $oViaje['celular_viajero']; ?></b> </td>
+                            </tr>
 			</table>
 		</div>
                 <span style="display:<?php if( $bValid ){ echo "none"; }else{ echo "block"; } ?>">
